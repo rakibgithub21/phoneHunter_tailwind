@@ -6,6 +6,11 @@ const loadPhone = async (searchID = '13') => {
 }
 
 const displayPhones = (phones) => {
+    if (phones.length === 0) {
+        errorMessage(true)
+    } else {
+        errorMessage(false)
+    }
     // console.log(phones);
     const phoneContainer = document.getElementById('phone-container');
 
@@ -38,6 +43,7 @@ const displayPhones = (phones) => {
     });
     //loading off
     toggleLoadingSpinner(false);
+
 }
 
 
@@ -45,10 +51,21 @@ const displayPhones = (phones) => {
 //handle search button:
 const handleSearchButton = () => {
     toggleLoadingSpinner(true)
+    
     const inputField = document.getElementById('input-field');
     const inputText = inputField.value
     loadPhone(inputText);
     inputField.value = ``
+}
+
+// show error message
+const errorMessage = (isError) => {
+    const errorContainer = document.getElementById('header-container');
+    if (isError) {
+        errorContainer.classList.remove('hidden')
+    } else {
+        errorContainer.classList.add('hidden')
+    }
 }
 
 
@@ -90,6 +107,8 @@ const showPhoneDetails = (phone) => {
     `;
     showDetailsModal.showModal()
 }
+
+
 
 
 loadPhone()
