@@ -26,12 +26,46 @@
 
     </header>
     <!-- main  -->
-    <main>
+    <main class="container mx-auto my-10">
+        <!-- input field and button -->
+        <section class="my-6 bg-gray-500 p-3 rounded-xl">
+            <input id="input-field" type="text" placeholder="Search here"
+                class="input input-bordered w-full max-w-xs" />
+            <button onclick="handleSearchButton()" class="btn btn-outline btn-success ">Search</button>
+        </section>
+        <!-- search result -->
         <section>
+            <!-- spinner or loader -->
+            <div id="loading-spinner" class="flex justify-center items-center hidden  h-[60vh]">
+                <span class="loading loading-spinner text-accent"></span>
+            </div>
             <div id="phone-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-                
+
+            </div>
+            <!-- show all button -->
+            <div id="show-all-container" class="hidden text-center my-12">
+                <button class="btn btn-neutral">Show All...</button>
             </div>
         </section>
+
+
+        <!-- Modal -->
+        <!-- Open the modal using ID.showModal() method -->
+
+        <dialog id="showDetailsModal" class="modal modal-bottom sm:modal-middle">
+            <div class="modal-box">
+                <h3 id="show-detail-phone-name" class="font-bold text-3xl"></h3>
+                <div id="show-detail-container">
+
+                </div>
+                <div class="modal-action">
+                    <form method="dialog">
+                        <!-- if there is a button in form, it will close the modal -->
+                        <button class="btn">Close</button>
+                    </form>
+                </div>
+            </div>
+        </dialog>
     </main>
     <!-- footer -->
     <footer>
